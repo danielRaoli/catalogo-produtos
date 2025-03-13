@@ -2,6 +2,8 @@ import { ProductList } from "@/components/ProductList";
 import { getAllProducts } from "@/lib/prisma";
 import { Produto } from "@/lib/types";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const products = (await getAllProducts()) as Produto[];
 
