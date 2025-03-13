@@ -34,7 +34,7 @@ export function ProductFilters({
   selectedCategory,
 }: ProductFiltersProps) {
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex flex-col md:flex-row items-center gap-4">
       <div className="relative">
         <Search className="absolute left-2 top-2.5 h-4 w-4 text-gray-500" />
         <Input
@@ -45,7 +45,7 @@ export function ProductFilters({
         />
       </div>
       <Select value={selectedCategory} onValueChange={onCategoryChange}>
-        <SelectTrigger className="w-[180px]">
+        <SelectTrigger className="w-full">
           <ListFilter className="mr-2 h-4 w-4" />
           <SelectValue placeholder="Categorias" />
         </SelectTrigger>
