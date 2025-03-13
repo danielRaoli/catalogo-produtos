@@ -2,17 +2,8 @@
 
 import { ProductCard } from "@/components/ProductCard";
 import { ProductFilters } from "@/components/ProductFilters";
+import { Produto } from "@/lib/types";
 import { useState, useEffect } from "react";
-
-export interface Produto {
-  id: number;
-  nome: string;
-  descricao: string;
-  preco: number;
-  disponivel: boolean;
-  imagemUrl: string;
-  categoria?: string;
-}
 
 interface ProductListProps {
   initialProducts: Produto[];
@@ -66,6 +57,7 @@ export function ProductList({ initialProducts }: ProductListProps) {
             name={product.nome}
             price={product.preco}
             imageUrl={product.imagemUrl}
+            disponivel={product.disponivel}
           />
         ))}
       </div>

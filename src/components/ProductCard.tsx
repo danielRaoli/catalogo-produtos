@@ -12,9 +12,16 @@ interface ProductCardProps {
   name: string;
   price: number;
   imageUrl: string;
+  disponivel: boolean;
 }
 
-export function ProductCard({ id, name, price, imageUrl }: ProductCardProps) {
+export function ProductCard({
+  id,
+  name,
+  price,
+  imageUrl,
+  disponivel,
+}: ProductCardProps) {
   const { addItem } = useCart();
 
   const handleAddToCart = () => {
@@ -38,6 +45,11 @@ export function ProductCard({ id, name, price, imageUrl }: ProductCardProps) {
             fill
             className="object-cover rounded-t-md"
           />
+          {!disponivel && (
+            <div className="absolute flex items-center justify-center inset-0 bg-gray-300 opacity-60">
+              <span className="text-black text-xl">Indisponível</span>
+            </div>
+          )}
         </AspectRatio>
       </div>
       <div className="flex flex-col flex-1 p-2">
@@ -57,8 +69,9 @@ export function ProductCard({ id, name, price, imageUrl }: ProductCardProps) {
             </span>
           </div>
           <button
-            className="bg-[#E1C397] w-8 h-8 rounded-md hover:bg-amber-400 md:w-12 md:h-12 flex items-center justify-center text-black transition-colors duration-300 cursor-pointer p-2 md:p-3"
+            className="bg-[#E1C397] disabled:cursor-not-allowed w-8 h-8 rounded-md hover:bg-amber-400 md:w-12 md:h-12 flex items-center justify-center text-black transition-colors duration-300 cursor-pointer p-2 md:p-3"
             onClick={handleAddToCart}
+            disabled={!disponivel}
           >
             <ShoppingCart className="w-8 h-8 md:w-12 md:h-12" />
           </button>
