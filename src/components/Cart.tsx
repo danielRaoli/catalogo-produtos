@@ -10,7 +10,7 @@ export function Cart() {
   const { items, clearCart, getTotalPrice } = useCart();
 
   const generateWhatsAppLink = () => {
-    const phoneNumber = "5574998073272"; // Substitua pelo número do vendedor (com DDD)
+    const phoneNumber = "5571999337977"; // Substitua pelo número do vendedor (com DDD)
     const message = encodeURIComponent(
       `🛒 *Pedido de Compra* 🛒\n\n` +
         items
