@@ -59,15 +59,20 @@ export default function ProductDetails({
                 />
               </div>
               <div className="grid grid-cols-4 md:grid-cols-1 gap-2 mt-4">
-                <Image
-                  src={product ? product.imagemUrl : "/logo.png"}
-                  alt="imagem do produto"
-                  className="object-cover rounded-md "
-                  fill
-                  onClick={() =>
-                    setSelectedImage(product ? product.imagemUrl : "/logo.png")
-                  }
-                />
+                <div className="w-14 h-14 relative cursor-pointer">
+                  <Image
+                    src={product ? product.imagemUrl : "/logo.png"}
+                    alt="imagem do produto"
+                    className="object-cover rounded-md "
+                    fill
+                    onClick={() =>
+                      setSelectedImage(
+                        product ? product.imagemUrl : "/logo.png"
+                      )
+                    }
+                  />
+                </div>
+
                 {product &&
                   product.imagens.map((image) => (
                     <div
