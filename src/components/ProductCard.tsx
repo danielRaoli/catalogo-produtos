@@ -13,6 +13,7 @@ interface ProductCardProps {
   price: number;
   imageUrl: string;
   disponivel: boolean;
+  onDetailsSelect: () => void;
 }
 
 export function ProductCard({
@@ -21,6 +22,7 @@ export function ProductCard({
   price,
   imageUrl,
   disponivel,
+  onDetailsSelect,
 }: ProductCardProps) {
   const { addItem } = useCart();
 
@@ -37,7 +39,7 @@ export function ProductCard({
 
   return (
     <Card className="h-full w-full bg-white dark:bg-gray-950 border-gray-300 dark:border-[#E1C397] p-0 transition-colors duration-300 flex flex-col">
-      <div className="relative w-full">
+      <div className="relative w-full" onClick={onDetailsSelect}>
         <AspectRatio ratio={1}>
           <Image
             src={imageUrl}
@@ -45,7 +47,11 @@ export function ProductCard({
             fill
             className="object-cover rounded-t-md"
           />
-          {!disponivel && (
+          {disponivel ? (
+            <span className="text-black text-center text-xs md:text-xl p-1 bg-[#E1C397] bottom-0 absolute w-full">
+              ver detalhes
+            </span>
+          ) : (
             <div className="absolute flex items-center justify-center inset-0 bg-gray-300 opacity-60">
               <span className="text-black text-xl">Indisponível</span>
             </div>

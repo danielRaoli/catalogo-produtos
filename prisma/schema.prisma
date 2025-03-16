@@ -15,6 +15,7 @@ datasource db {
   // directUrl = env("DATABASE_URL_UNPOOLED")
 }
 
+
 model Produto { 
   id          Int     @id @default(autoincrement())  
   nome        String  
@@ -22,4 +23,14 @@ model Produto {
   imagemUrl   String
   preco       Float  
   disponivel  Boolean  
+  imagens     Imagem[]
+}
+
+model Imagem {
+  id        Int     @id @default(autoincrement())
+  url       String
+  produtoId Int
+  produto   Produto @relation(fields: [produtoId], references: [id], onDelete: Cascade)
+
+  @@index([produtoId])
 }

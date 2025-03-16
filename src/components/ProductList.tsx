@@ -4,6 +4,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { ProductFilters } from "@/components/ProductFilters";
 import { Produto } from "@/lib/types";
 import { useState, useEffect } from "react";
+import ProductDetails from "./product-details";
 
 interface ProductListProps {
   initialProducts: Produto[];
@@ -15,7 +16,7 @@ export function ProductList({ initialProducts }: ProductListProps) {
     useState<Produto[]>(initialProducts);
   const [searchValue, setSearchValue] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Todos");
-
+  const [selectedProduct, setSelectedProduct] = useState<Produto | null>(null);
   useEffect(() => {
     let filtered = [...products];
 
@@ -58,8 +59,13 @@ export function ProductList({ initialProducts }: ProductListProps) {
             price={product.preco}
             imageUrl={product.imagemUrl}
             disponivel={product.disponivel}
+            onDetailsSelect={() => setSelectedProduct(product)}
           />
         ))}
+        <ProductDetails
+          product={selectedProduct}
+          onOpenChange={() => setSelectedProduct(null)}
+        />
       </div>
     </>
   );
